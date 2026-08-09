@@ -1,0 +1,44 @@
+.payments-page{
+width:100%;
+}
+
+.payments-page h1{
+margin-bottom:30px;
+color:#35563F;
+}
+
+.payment-table{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.payment-head,
+.payment-row{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+padding:18px 25px;
+border-bottom:1px solid #eee;
+align-items:center;
+}
+
+.payment-head{
+background:#72B37E;
+color:white;
+font-weight:bold;
+}
+
+.payment-row:last-child{
+border-bottom:none;
+}
+
+.paid{
+color:#27AE60;
+font-weight:bold;
+}
+
+.pending{
+color:#E67E22;
+font-weight:bold;
+}

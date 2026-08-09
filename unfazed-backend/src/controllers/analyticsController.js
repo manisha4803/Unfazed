@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Client = require("../models/Client");
 const Appointment = require("../models/Appointment");
 const SessionNote = require("../models/SessionNote");
@@ -8,7 +9,6 @@ const getAnalytics = async (req, res) => {
     const therapist = req.user.id;
 
     const totalClients = await Client.countDocuments({ therapist });
-
     const totalAppointments = await Appointment.countDocuments({ therapist });
 
     const completedAppointments = await Appointment.countDocuments({
@@ -18,10 +18,12 @@ const getAnalytics = async (req, res) => {
 
     const totalNotes = await SessionNote.countDocuments({ therapist });
 
-    const totalRevenue = await Payment.aggregate([
+    const therapistObjId = new mongoose.Types.ObjectId(therapist);
+
+    const totalRevenueResult = await Payment.aggregate([
       {
         $match: {
-          therapist: req.user.id,
+          therapist: therapistObjId,
           status: "Paid",
         },
       },
@@ -33,6 +35,8 @@ const getAnalytics = async (req, res) => {
       },
     ]);
 
+    const totalRevenue = totalRevenueResult[0]?.revenue || 0;
+
     res.status(200).json({
       success: true,
       analytics: {
@@ -40,7 +44,8 @@ const getAnalytics = async (req, res) => {
         totalAppointments,
         completedAppointments,
         totalNotes,
-        revenue: totalRevenue[0]?.revenue || 0,
+        totalRevenue,
+        revenue: totalRevenue,
       },
     });
 

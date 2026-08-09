@@ -1,0 +1,36 @@
+.notifications-page{
+width:100%;
+}
+
+.notifications-page h1{
+margin-bottom:30px;
+color:#35563F;
+}
+
+.notification-list{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.notification-card{
+background:white;
+padding:22px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+border-left:6px solid #72B37E;
+}
+
+.notification-card h3{
+margin-bottom:10px;
+color:#35563F;
+}
+
+.notification-card p{
+color:#666;
+margin-bottom:12px;
+}
+
+.notification-card small{
+color:#999;
+}

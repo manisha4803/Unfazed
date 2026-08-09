@@ -1,0 +1,85 @@
+.appointments-page{
+width:100%;
+}
+
+.appointments-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.appointments-header h1{
+font-size:34px;
+color:#35563F;
+}
+
+.book-btn{
+background:#72B37E;
+color:white;
+border:none;
+padding:14px 24px;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+}
+
+.search-box{
+width:100%;
+padding:15px;
+border-radius:12px;
+border:1px solid #ddd;
+margin-bottom:30px;
+}
+
+.appointments-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:25px;
+}
+
+.appointment-card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.appointment-card h3{
+margin-bottom:12px;
+color:#35563F;
+}
+
+.appointment-card p{
+margin-bottom:8px;
+color:#555;
+}
+
+.status{
+display:inline-block;
+padding:8px 18px;
+border-radius:20px;
+font-size:14px;
+margin-top:15px;
+font-weight:600;
+}
+
+.pending{
+background:#FFF3CD;
+color:#856404;
+}
+
+.confirmed{
+background:#D4EDDA;
+color:#155724;
+}
+
+.completed{
+background:#D1ECF1;
+color:#0C5460;
+}
+
+.cancelled{
+background:#F8D7DA;
+color:#721C24;
+}

@@ -1,0 +1,37 @@
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+
+}
+
+.navbar h2{
+
+color:#314D35;
+font-size:30px;
+
+}
+
+.navbar p{
+
+color:#666;
+margin-top:5px;
+
+}
+
+.avatar{
+
+width:55px;
+height:55px;
+border-radius:50%;
+background:#7BAE7F;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-weight:bold;
+font-size:20px;
+
+}

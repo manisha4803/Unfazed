@@ -32,11 +32,26 @@ const therapistSchema = new mongoose.Schema(
       default: "",
     },
 
+    specialization: {
+      type: String,
+      default: "",
+    },
+
     specializations: [
       {
         type: String,
       },
     ],
+
+    experience: {
+      type: String,
+      default: "",
+    },
+
+    phone: {
+      type: String,
+      default: "",
+    },
 
     languages: [
       {
@@ -44,9 +59,9 @@ const therapistSchema = new mongoose.Schema(
       },
     ],
     profileImage: {
-    type: String,
-    default: "",
-},
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,

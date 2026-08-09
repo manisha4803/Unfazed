@@ -8,19 +8,21 @@ const appointmentSchema = new mongoose.Schema(
       required: true,
     },
 
+    client: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Client",
+    },
+
     clientName: {
       type: String,
-      required: true,
     },
 
     clientEmail: {
       type: String,
-      required: true,
     },
 
     clientPhone: {
       type: String,
-      required: true,
     },
 
     date: {
@@ -37,6 +39,11 @@ const appointmentSchema = new mongoose.Schema(
       type: String,
       enum: ["Online", "Offline"],
       default: "Online",
+    },
+
+    notes: {
+      type: String,
+      default: "",
     },
 
     status: {

@@ -35,7 +35,7 @@ const getProfile = async (req, res) => {
 };
 const updateProfile = async (req, res) => {
   try {
-    const { name, bio, languages, specializations } = req.body;
+    const { name, bio, languages, specializations, specialization, experience, phone } = req.body;
 
     const therapist = await Therapist.findById(req.user.id);
 
@@ -46,10 +46,13 @@ const updateProfile = async (req, res) => {
       });
     }
 
-    if (name) therapist.name = name;
-    if (bio) therapist.bio = bio;
-    if (languages) therapist.languages = languages;
-    if (specializations) therapist.specializations = specializations;
+    if (name !== undefined) therapist.name = name;
+    if (bio !== undefined) therapist.bio = bio;
+    if (languages !== undefined) therapist.languages = languages;
+    if (specializations !== undefined) therapist.specializations = specializations;
+    if (specialization !== undefined) therapist.specialization = specialization;
+    if (experience !== undefined) therapist.experience = experience;
+    if (phone !== undefined) therapist.phone = phone;
 
     await therapist.save();
 

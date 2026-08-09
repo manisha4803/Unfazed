@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 const dns = require("dns");
 
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
+try {
+  dns.setServers(["1.1.1.1", "8.8.8.8"]);
+} catch (e) {
+  console.error("DNS setServers failed:", e);
+}
 
 const connectDB = async () => {
   try {
@@ -18,10 +22,7 @@ const connectDB = async () => {
   } catch (error) {
     console.error("❌ MongoDB Connection Failed");
     console.error(`Reason: ${error.message}`);
-    console.error(
-      "👉 Tip: If this is an IP Whitelist error, please add your current IP address in MongoDB Atlas under Security -> Network Access."
-    );
   }
 };
 
-module.exports = connectDB;
+module.exports = connectDB;

@@ -15,20 +15,22 @@ const signup = async (req, res) => {
       });
     }
 
-    const existingUser = await Therapist.findOne({ email });
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const existingUser = await Therapist.findOne({ email: normalizedEmail });
 
     if (existingUser) {
       return res.status(409).json({
         success: false,
-        message: "Email already registered",
+        message: "Email already registered. Please login instead.",
       });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const therapist = await Therapist.create({
-      name,
-      email,
+      name: name.trim(),
+      email: normalizedEmail,
       password: hashedPassword,
       slug: generateSlug(name),
     });
@@ -54,9 +56,16 @@ const signup = async (req, res) => {
   } catch (error) {
     console.error("Signup error:", error);
 
+    if (error.code === 11000) {
+      return res.status(409).json({
+        success: false,
+        message: "Email already registered. Please login instead.",
+      });
+    }
+
     res.status(500).json({
       success: false,
-      message: "Server Error",
+      message: "Server Error during signup",
       error: error.message,
     });
   }
@@ -72,7 +81,9 @@ const login = async (req, res) => {
       });
     }
 
-    const therapist = await Therapist.findOne({ email });
+    const normalizedEmail = email.toLowerCase().trim();
+
+    const therapist = await Therapist.findOne({ email: normalizedEmail });
 
     if (!therapist) {
       return res.status(404).json({
